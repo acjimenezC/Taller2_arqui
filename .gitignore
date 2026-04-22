@@ -1,0 +1,17 @@
+﻿# Python cache and venv
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Environment
+.env
+
+# Database
+data/*.db
+
+# Git and OS
+.git/
+.DS_Store
+Thumbs.db

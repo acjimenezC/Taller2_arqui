@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Shoes Chat AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar con productos -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>📦 Productos</h2>
+                <button id="btnLoadProducts" class="btn-secondary">Cargar</button>
+            </div>
+            <div id="productsList" class="products-list">
+                <p class="loading">Cargando productos...</p>
+            </div>
+        </aside>
+
+        <!-- Chat principal -->
+        <main class="chat-container">
+            <div class="chat-header">
+                <h1>🛒 E-Commerce Shoes Chat AI</h1>
+                <div class="session-info">
+                    <small>Session ID: <code id="sessionId">-</code></small>
+                    <button id="btnNewSession" class="btn-small">Nueva Sesión</button>
+                </div>
+            </div>
+
+            <div id="chatMessages" class="chat-messages">
+                <div class="message assistant-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <p>¡Hola! Soy tu asesor de zapatos. ¿En qué puedo ayudarte hoy? Puedo recomendarte productos según marca, talla, categoría o presupuesto.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Escribe tu pregunta..." 
+                    class="message-input"
+                >
+                <button id="btnSend" class="btn-primary">Enviar</button>
+            </div>
+
+            <div id="loadingIndicator" class="loading-indicator hidden">
+                <span class="spinner"></span> Esperando respuesta...
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
