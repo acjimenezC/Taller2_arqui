@@ -1,4 +1,9 @@
-﻿"""Database setup and session management."""
+﻿"""Database setup and session management.
+
+Configura la conexión a SQLite y crea la sesión para acceder a la BD.
+Encapsúla la creación de todas las tablas (init_db)
+Proporciona un generador de sesiones (get_db) para uso en endpoints
+"""
 
 from __future__ import annotations
 

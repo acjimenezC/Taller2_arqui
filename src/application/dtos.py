@@ -1,4 +1,9 @@
-﻿"""Application data transfer objects."""
+﻿"""Application data transfer objects (DTOs).
+
+Este módulo define las estructuras de datos que se intercambian con la API REST.
+Los DTOs validan y transforman los datos antes de ser procesados por los servicios.
+Utilizan Pydantic para validación automática de tipos y valores.
+"""
 
 from __future__ import annotations
 

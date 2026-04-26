@@ -1,4 +1,16 @@
-﻿"""FastAPI entrypoint and route definitions."""
+﻿"""FastAPI entrypoint and route definitions.
+
+Define todos los endpoints (rutas) de la API REST:
+- GET /health: verifica que el servidor esté funcionando
+- GET /products: lista productos con filtros opcionales
+- POST /chat: procesa mensajes de usuario con IA y contexto
+- GET /chat/history: obtiene el historial completo de un chat
+- Operaciones CRUD de productos
+
+Configura CORS para permitir requests desde el frontend.
+Inicializa la BD al arrancar la aplicación.
+Encadena todas las capas: API -> Servicios -> Repositorios -> BD/IA
+"""
 
 from __future__ import annotations
 

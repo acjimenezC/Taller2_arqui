@@ -1,4 +1,10 @@
-﻿"""Shared pytest fixtures."""
+﻿"""Shared pytest fixtures.
+
+Configura fixtures reutilizables para todas las pruebas.
+Crea una BD en memoria aislada para cada test para evitar contaminación de datos.
+Proporciona una sesión de SQLAlchemy limpia para pruebas sin efectos secundarios.
+Todas las tablas se crean y se limpian automáticamente para cada test.
+"""
 
 from __future__ import annotations
 

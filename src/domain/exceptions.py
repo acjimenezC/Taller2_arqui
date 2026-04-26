@@ -1,4 +1,9 @@
-﻿"""Domain exceptions used across business rules."""
+﻿"""Domain exceptions used across business rules.
+
+Define excepciones personalizadas para errores específicos del dominio.
+Permiten capturar y manejar errores de negocio de forma clara y consistente.
+Ejemplos: Producto no encontrado, datos inválidos, errores en el chat.
+"""
 
 
 class DomainError(Exception):

@@ -1,4 +1,11 @@
-﻿"""Google Gemini provider implementation."""
+﻿"""Google Gemini provider implementation.
+
+Implementa el proveedor de IA usando Google Gemini 1.5 Flash.
+Construye prompts contextualizados con productos disponibles e historial del chat.
+Comunica con la API de Google para generar respuestas de asesor de ventas.
+Tiene un fallback determinístico si la API no está disponible.
+Estructura el prompt en español para vender zapatos de forma profesional.
+"""
 
 from __future__ import annotations
 

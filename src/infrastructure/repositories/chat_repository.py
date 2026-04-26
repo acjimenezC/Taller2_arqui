@@ -1,4 +1,10 @@
-﻿"""SQL repository implementation for chat memory."""
+﻿"""SQL repository implementation for chat memory.
+
+Implementa la interfaz IChatRepository usando SQLAlchemy.
+Guarda y recupera el historial de conversaciones de cada sesión.
+Retiene los últimos 6 mensajes para proporcionar contexto a la IA.
+Ordena los mensajes cronológicamente para mantener la secuencia correcta.
+"""
 
 from __future__ import annotations
 
@@ -16,19 +22,25 @@ class ChatRepository(IChatRepository):
     """SQLAlchemy implementation of chat repository."""
 
     def __init__(self, db: Session) -> None:
-        """Store database session.
+        """Inicializa el repositorio de chat.
+
+        Guarda la sesión de SQLAlchemy para operaciones de persistencia
+        y recuperación de mensajes.
 
         Args:
-            db: SQLAlchemy session.
+            db: Sesión SQLAlchemy activa.
         """
         self._db = db
 
     def save_message(self, session_id: str, message: ChatMessage) -> None:
-        """Persist one chat message.
+        """Persiste un mensaje del chat en la BD.
+
+        Convierte la entidad ChatMessage a modelo ORM y la guarda
+        en la tabla de chat_memory con timestamp de creación.
 
         Args:
-            session_id: Session identifier.
-            message: Message entity.
+            session_id: Identificador único de la sesión de chat.
+            message: Entidad ChatMessage a persistir (usuario o asistente).
         """
         model = ChatMemoryModel(
             session_id=session_id,
@@ -40,14 +52,18 @@ class ChatRepository(IChatRepository):
         self._db.commit()
 
     def get_recent_messages(self, session_id: str, limit: int = 6) -> list[ChatMessage]:
-        """Return latest chat messages in chronological order.
+        """Obtiene los últimos mensajes del chat de una sesión.
+
+        Recupera los N mensajes más recientes en orden cronológico ascendente
+        (del más antiguo al más nuevo). Se usa para proporcionar contexto
+        a la IA en la ventana de conversación.
 
         Args:
-            session_id: Session identifier.
-            limit: Message limit.
+            session_id: Identificador de la sesión.
+            limit: Número máximo de mensajes a retornar (por defecto 6).
 
         Returns:
-            list[ChatMessage]: Latest messages.
+            list[ChatMessage]: Lista ordenada de últimos mensajes.
         """
         rows = (
             self._db.execute(
@@ -63,7 +79,18 @@ class ChatRepository(IChatRepository):
         return [self._to_entity(row) for row in rows]
 
     def get_all_messages(self, session_id: str) -> list[ChatMessage]:
-        """Return complete chat history for one session."""
+        """Obtiene el historial completo del chat de una sesión.
+
+        Recupera TODOS los mensajes de la sesión en orden cronológico
+        ascendente desde la más antigua hasta la más reciente.
+        Se usa para mostrar el historial completo al usuario.
+
+        Args:
+            session_id: Identificador de la sesión.
+
+        Returns:
+            list[ChatMessage]: Historial completo ordenado cronológicamente.
+        """
         rows = (
             self._db.execute(
                 select(ChatMemoryModel)
@@ -77,7 +104,17 @@ class ChatRepository(IChatRepository):
 
     @staticmethod
     def _to_entity(row: ChatMemoryModel) -> ChatMessage:
-        """Map ORM row to domain entity."""
+        """Convierte modelo ORM a entidad de dominio ChatMessage.
+
+        Mapea un registro de la tabla chat_memory a la entidad de dominio.
+        Asegura que el timestamp tenga zona horaria UTC.
+
+        Args:
+            row: Modelo ORM ChatMemoryModel de SQLAlchemy.
+
+        Returns:
+            ChatMessage: Entidad de dominio equivalente.
+        """
         created_at = row.created_at
         if created_at.tzinfo is None:
             created_at = created_at.replace(tzinfo=timezone.utc)

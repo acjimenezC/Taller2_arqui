@@ -1,4 +1,11 @@
-﻿"""Global application configuration."""
+﻿"""Global application configuration.
+
+Carga variables de entorno desde el archivo .env.
+Configura la ruta de la base de datos SQLite.
+Define variables globales como nombre y versión de la aplicación.
+Guarda claves API para Google Gemini.
+Es el punto central de configuración de toda la aplicación.
+"""
 
 from __future__ import annotations
 

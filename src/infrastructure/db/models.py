@@ -1,4 +1,10 @@
-﻿"""SQLAlchemy ORM models."""
+﻿"""SQLAlchemy ORM models.
+
+Define la estructura de las tablas de la base de datos SQLite.
+Mapea objetos Python a filas en la BD.
+ProductModel: tabla de productos del catálogo
+ChatMemoryModel: tabla del historial de conversaciones
+"""
 
 from __future__ import annotations
 

@@ -1,4 +1,10 @@
-﻿"""Core domain entities for the e-commerce chat backend."""
+﻿"""Core domain entities for the e-commerce chat backend.
+
+Define los objetos principales del negocio (Producto, Mensaje de Chat).
+Contienen la lógica de validación de reglas de negocio.
+Son independientes de la base de datos y la API.
+Cada entidad valida sus datos al ser creada para mantener la integridad del dominio.
+"""
 
 from __future__ import annotations
 

@@ -1,4 +1,10 @@
-﻿"""Initial seed data for products."""
+﻿"""Initial seed data for products.
+
+Inserta 11 productos de ejemplo en la BD si la tabla está vacía.
+Cubre diferentes marcas (Nike, Adidas, Puma, etc) y categorías (Running, Casual, Skate).
+Se ejecuta automáticamente al iniciar la aplicación.
+Evita duplicar datos si ya existen productos en la BD.
+"""
 
 from __future__ import annotations
 

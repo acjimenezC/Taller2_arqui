@@ -1,4 +1,10 @@
-﻿"""Domain repository interfaces."""
+﻿"""Domain repository interfaces.
+
+Define contratos (interfaces abstractas) para acceder a datos.
+Actúan como puertos que pueden ser implementados por cualquier tecnología
+(SQL, NoSQL, API remota, etc.) sin afectar la lógica de negocio.
+Permiten el patrón de inyección de dependencias.
+"""
 
 from __future__ import annotations
 

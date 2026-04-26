@@ -1,4 +1,10 @@
-﻿FROM python:3.11-slim
+﻿# Dockerfile - Containeriza la aplicación Python
+# Construye una imagen Docker que ejecuta la API FastAPI en un contenedor.
+# Usa Python 3.11 slim para minimizar el tamaño de la imagen.
+# Instala dependencias desde requirements.txt y expone el puerto 8000.
+# Se usa con docker-compose para orquestar con el frontend.
+
+FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1

@@ -1,4 +1,16 @@
 // ============================================
+// APLICACIÓN FRONTEND JAVASCRIPT
+// ============================================
+// Interfaz de usuario para el chat con IA y catálogo de productos.
+// Funciones principales:
+//   - Gestionar sesiones de chat
+//   - Enviar mensajes al backend
+//   - Mostrar historial de conversaciones
+//   - Cargar y filtrar productos disponibles
+//   - Mantener estado en localStorage
+// Comunicación con API REST en http://127.0.0.1:8000
+
+// ============================================
 // CONFIG
 // ============================================
 const API_BASE_URL = 'http://127.0.0.1:8000';
